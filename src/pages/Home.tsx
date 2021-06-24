@@ -1,6 +1,7 @@
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
+import { SlideFade } from '@chakra-ui/react'
 import { FiLogIn } from "react-icons/fi"
 import "../styles/auth.scss"
 import "../styles/button.scss"
@@ -9,11 +10,13 @@ import { useHistory } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
+import { useToast } from '@chakra-ui/react'
 
 export function Home() {
   const history = useHistory()
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('')
+  const toast = useToast()
 
   async function handleCreateRoom() {
     if (!user) {
@@ -33,7 +36,28 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if(!roomRef.exists()){
-      alert('Room does not exists.')
+      toast({
+        title: "Erro ao entrar.",
+        description: "Código errado ou sala não existe",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right"
+      })
+      return
+
+      
+    }
+
+    if(!roomRef.val().endAt){
+      toast({
+        title: "Erro ao entrar.",
+        description: "Sala já Finalizada",
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right"
+      })
       return
     }
 
@@ -43,12 +67,14 @@ export function Home() {
   return (
     <div id="page-auth">
       <aside>
+      <SlideFade in={true} offsetY="20px">
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao-vivo.</strong>
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
+        </SlideFade>
       </aside>
       <main>
-        <div className="main-content">
+        <SlideFade in={true} offsetY="-20px" className="main-content">
           <img src={logoImg} alt="Letmeask" />
           <div className="title-smartphone">
             <strong>Crie salas de Q&amp;A ao-vivo.</strong>
@@ -78,7 +104,7 @@ export function Home() {
               Entrar na sala
             </Button>
           </form>
-        </div>
+        </SlideFade>
       </main>
     </div>
   )
