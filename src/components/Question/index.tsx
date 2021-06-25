@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { SlideFade } from '@chakra-ui/react'
+import { SlideFade, useColorMode } from '@chakra-ui/react'
 import cx from 'classnames'
 import avatarImg from '../../assets/images/avatar.svg'
 import './styles.scss'
@@ -21,18 +21,20 @@ export function Question({
   isHighlighted = false,
   isAnswered = false
 }: QuestionProps) {
+  const { colorMode } = useColorMode()
   return (
     <SlideFade in={true} offsetY="20px"
     className={cx(
       'question',
       { answered: isAnswered },
-      { highlighted: isHighlighted && !isAnswered }
+      { highlighted: isHighlighted && !isAnswered },
+      colorMode
     )}>
-       <p>{content}</p>
+       <p className={colorMode}>{content}</p>
       <footer>
       <div className="user-info">
        <img src={author.avatar} alt={author.name}/>
-        <span>{author.name}</span>
+        <span className={colorMode}>{author.name}</span>
       </div>
       <div>{children}</div>
       </footer>

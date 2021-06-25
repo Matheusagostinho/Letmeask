@@ -1,19 +1,18 @@
 import { useHistory, useParams } from 'react-router-dom'
-import logoImg from '../../assets/images/logo.svg'
+
 import deleteImg from '../../assets/images/delete.svg'
 import checkImg from '../../assets/images/check.svg'
 import answerImg from '../../assets/images/answer.svg'
 import deleteRedImg from '../../assets/images/deleteRed.svg'
 import closeRedImg from '../../assets/images/closeRed.svg'
-import { Button } from '../../components/Button/'
-import { RoomCode } from '../../components/RoomCode'
+import circleImg from '../../assets/images/circle.svg'
 import '../../styles/room.scss'
 import { ModalDelete } from '../../components/ModalDelete/'
 import { database } from '../../services/firebase'
 import { Question } from '../../components/Question'
 import { useRoom } from '../../hooks/useRoom'
-
 import { RefObject, useRef, useState } from 'react'
+import { Header } from '../../components/Header'
 
 type RoomParams = {
   id:string;
@@ -68,19 +67,11 @@ export function AdminRoom() {
 
   return (
     <div id="page-room">
-      <header>
-        <div className="content">
-          <img src={logoImg} alt="LetmeAsk"/>
-          <div>
-            <RoomCode code={roomId}/>
-            <Button isOutlined onClick={handleEndRoom}> Encerar Sala</Button>
-          </div>
-        </div>
-      </header>
+      <Header handleEndRoom={handleEndRoom} roomId={roomId}/>
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-         {questions.length > 0 && <span> {questions.length} Perguntas</span>}
+         {questions.length > 0 && <div> {questions.length} <p>Perguntas</p></div>}
         </div>
         <div className="question-list">
         {questions.map(question => {
@@ -114,7 +105,14 @@ export function AdminRoom() {
             </Question>
           )
         })}
-        </div>
+          {questions.length === 0 &&
+            <div className="empty-questions">
+              <img src={circleImg} alt="Mensagens"/>
+              <h1>Nenhuma pergunta por aqui...</h1>
+              <p>Envie o código desta sala para seus amigos e comece a responder perguntas!</p>
+            </div>
+          }
+          </div>
       </main>
       <ModalDelete
         isOpen={isOpen}

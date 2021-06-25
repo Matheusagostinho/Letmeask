@@ -4,18 +4,45 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #f8f8f8;
-  color: #29292e;
+html {
+  font-size: 68.75%;
+
+  @media (max-width: 768px) {
+
+      font-size: 56.25%;
+
+  }
+  @media (max-width: 1024px) {
+
+    font-size:  62.5%;
 }
+
+}
+
+
+
 
 body,
 input,
 button,
 textarea {
-  font: 400 16px "Roboto", sans-serif;
+  font: 400 1.5rem "Roboto", sans-serif;
 }
 
 h2 {
   font: 400 16px "Poppins", sans-serif;
+  @media (max-width: 720px) {
+
+    font-size: 56.25%;;
 }
+}
+
+h1 {
+  font: 400 24px "Poppins", sans-serif;
+  @media (max-width: 720px) {
+
+    font-size: 56.25%;;
+}
+}
+
+

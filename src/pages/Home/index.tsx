@@ -1,7 +1,8 @@
 import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
+import logoWhiteImg from '../../assets/images/logoWhite.svg'
 import googleIconImg from '../../assets/images/google-icon.svg'
-import { SlideFade, useToast } from '@chakra-ui/react'
+import { SlideFade, useColorMode, useToast } from '@chakra-ui/react'
 import { FiLogIn } from 'react-icons/fi'
 import '../../styles/auth.scss'
 import '../../styles/button.scss'
@@ -16,6 +17,7 @@ export function Home () {
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('')
   const toast = useToast()
+  const { colorMode } = useColorMode()
 
   async function handleCreateRoom () {
     if (!user) {
@@ -45,7 +47,7 @@ export function Home () {
       return
     }
 
-    if (!roomRef.val().endAt) {
+    if (roomRef.val().endedAt) {
       toast({
         title: 'Erro ao entrar.',
         description: 'Sala já Finalizada',
@@ -71,7 +73,7 @@ export function Home () {
       </aside>
       <main>
         <SlideFade in={true} offsetY="-20px" className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={colorMode === 'light' ? logoImg : logoWhiteImg} alt="Letmeask" />
           <div className="title-smartphone">
             <strong>Crie salas de Q&amp;A ao-vivo.</strong>
             <p>Tire as dúvidas da sua audiência em tempo-real</p>
@@ -95,6 +97,7 @@ export function Home () {
               placeholder="Digite o código da sala"
               onChange={event => { setRoomCode(event.target.value) }}
               value={roomCode}
+              className={colorMode}
             />
             <Button type="submit" className="button">
               <FiLogIn />

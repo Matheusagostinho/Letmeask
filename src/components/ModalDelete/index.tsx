@@ -33,7 +33,7 @@ export function ModalDelete ({ isOpen, cancelRef, onClose, deleteRedImg, confirm
   >
 <AlertDialogOverlay>
   <AlertDialogContent >
-    <AlertDialogHeader marginTop="60px" alignItems="center" textAlign="center" fontSize="lg" fontWeight="bold" className="alert">
+    <AlertDialogHeader as="div" marginTop="60px" alignItems="center" textAlign="center" fontSize="3xl" fontWeight="bold" className="alert">
       <Image src={deleteRedImg} alt="Deletar pergunta" marginX="auto" marginBottom="16px"/>
         <h2>{title}</h2>
     </AlertDialogHeader>
@@ -42,11 +42,11 @@ export function ModalDelete ({ isOpen, cancelRef, onClose, deleteRedImg, confirm
       {text}
     </AlertDialogBody>
 
-    <AlertDialogFooter marginBottom="60px" justifyContent="center">
-      <ButtonC ref={cancelRef} onClick={onClose}>
+    <AlertDialogFooter marginBottom="60px" justifyContent="center" >
+      <ButtonC ref={cancelRef} onClick={onClose} paddingY="20px" paddingX="35px" fontSize="xl">
         Cancelar
       </ButtonC>
-      <ButtonC colorScheme="red" onClick={confirmDeleteQuestion} ml={3}>
+      <ButtonC colorScheme="red" onClick={confirmDeleteQuestion} ml={3} paddingY="20px" paddingX="35px" fontSize="xl">
         Sim, excluir
       </ButtonC>
     </AlertDialogFooter>
