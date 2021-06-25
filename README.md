@@ -45,8 +45,8 @@ O Layout utilizado está disponível na seguinte url: **[Acessar Layout](https:/
 
 ### Demo da Aplicação
 
-**[Acessar Demo](https://letmeask-838ae.web.app/)**
-Sala de Demonstração -Md4HluDgGK28Myf-_XX
+**[Acessar Demo](https://letmeask-838ae.web.app/)**<br>
+Sala de Demonstração: ```-Md4HluDgGK28Myf-_XX```
 ## :hammer_and_wrench: Tecnologias
 
 Este projeto utiliza as seguintes tecnologias:
