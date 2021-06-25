@@ -1,13 +1,12 @@
-import copyImg from "../assets/images/copy.svg"
-import "../styles/room-code.scss"
+import copyImg from '../../assets/images/copy.svg'
+import './room-code.scss'
 
  type RoomCodeProps = {
    code: string
  }
 
-export function RoomCode(props: RoomCodeProps){
-  
-function copyRoomCodeToClipboard(){
+export function RoomCode(props: RoomCodeProps) {
+  function copyRoomCodeToClipboard() {
     navigator.clipboard.writeText(props.code)
   }
 

@@ -1,31 +1,31 @@
 import { Link } from 'react-router-dom'
-import {FormEvent, useState} from 'react'
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
-import "../styles/auth.scss"
-import "../styles/button.scss"
-import { Button } from '../components/Button'
-import { database } from '../services/firebase'
-import { useAuth } from '../hooks/useAuth'
+import { FormEvent, useState } from 'react'
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+import '../../styles/auth.scss'
+import '../../styles/button.scss'
+import { Button } from '../../components/Button'
+import { database } from '../../services/firebase'
+import { useAuth } from '../../hooks/useAuth'
 import { useHistory } from 'react-router'
 export function NewRoom() {
- const { user } = useAuth()
+  const { user } = useAuth()
   const [newRoom, setNewRoom] = useState('')
   const history = useHistory()
 
- async function handleCreateRoom(event:FormEvent){
+  async function handleCreateRoom(event:FormEvent) {
     event.preventDefault()
 
-    if (newRoom.trim()===''){
-      return;
+    if (newRoom.trim() === '') {
+      return
     }
 
     const roomRef = database.ref('rooms')
 
     const firebaseRoom = await roomRef.push({
-      
+
       title: newRoom,
-      authorId: user?.id,
+      authorId: user?.id
     })
     history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
