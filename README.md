@@ -72,7 +72,7 @@ Antes de prosseguir, tenha em sua máquina o [Node.js](https://nodejs.org/en/dow
 **Abra o terminal, clone o projeto e entre em seu diretório**
 
 ```bash
-$ git clone https://github.com/Matheusagostinho/Letmeask.git && cd nlw06-together
+$ git clone https://github.com/Matheusagostinho/Letmeask.git && cd Letmeask
 ```
 
 **Instale as dependências**
