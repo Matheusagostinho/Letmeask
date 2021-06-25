@@ -43,6 +43,10 @@ Let me ask é uma plataforma para perguntas e respostas (Q&A) que permite escolh
 
 O Layout utilizado está disponível na seguinte url: **[Acessar Layout](https://www.figma.com/file/H9FbUVrTYB7GPxlPphaeBh/Letmeask-(Copy))**
 
+### Demo da Aplicação
+
+**[Acessar Demo](https://letmeask-838ae.web.app/)**
+Sala de Demonstração -Md4HluDgGK28Myf-_XX
 ## :hammer_and_wrench: Tecnologias
 
 Este projeto utiliza as seguintes tecnologias:
